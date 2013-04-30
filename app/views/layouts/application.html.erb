@@ -1,0 +1,126 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<link href="/stylesheets/bootstrap.css" rel="stylesheet" media="screen">
+<link href="/stylesheets/bootstrap-responsive.css" rel="stylesheet" media="screen">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/simpleCart.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.mousewheel.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="/javascripts/jlite.js"></script>
+<script type="text/javascript" src="/javascripts/hover.js"></script>
+
+<script>
+$('a').popover({
+    placement: 'left'
+});
+</script>
+
+
+<script type="text/javascript">
+			
+$(document).ready(function(){
+
+	$("select").each(function(){
+	  $(this).wrap('<div class="selectbox"/>');
+		$(this).after("<span class='selecttext'></span><span class='select-arrow'></span>");
+		var val = $(this).children("option:selected").text();
+		$(this).next(".selecttext").text(val);
+		$(this).change(function(){
+			var val = $(this).children("option:selected").text();
+			$(this).next(".selecttext").text(val);
+		});
+	});
+
+});
+			
+</script>
+
+
+
+
+<script>
+  simpleCart({
+		cartColumns: [
+			{ attr: "name" , label: "Name" } ,
+			{ attr: "price" , label: "Price", view: 'currency' } ,
+			{ view: "decrement" , label: "Remove" , text: "-" } ,
+			{ attr: "quantity" , label: "Qty" } ,
+			{ view: "increment" , label: "Add" , text: "+" } ,
+			{ attr: "total" , label: "SubTotal", view: 'currency' } ,
+			{ view: "remove" , text: "Remove" , label: false }
+		],
+  	 checkout: {
+      type: "PayPal",
+      email: "Freshkaufee@gmail.com"
+    },
+	cartStyle: "table",
+	    currency: "USD",
+	    shippingFlatRate: 4.50,
+
+
+	});
+
+</script>
+
+
+
+</head>
+
+
+<body>
+<div id="content">
+
+<div id="bagcart"><p class="cart"><a href="/cart">In The Bag</a></p>
+<div class="bag_divider"></div>
+<div class="cart-info">
+<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items |  <span class="simpleCart_total"></span></div>
+<div class="bag_divider"></div>
+<div class="checkout">
+<a href="/cart">Checkout</a> | 
+<a href="javascript:;" class="simpleCart_empty">empty cart</a>
+</div>
+</div>
+    
+
+<div class="container">
+	<div class="head-nav">
+		<img class="logo" src="/images/fk.png" width="150">
+		<a href="/beanlist"><img class="beanlist" src="/images/beanlist1.png"></a>
+    <ul class="breadcrumb" >
+			<li> <a href="/">The GRIND</a></li> <span></span>|
+		 		<li><a href="/shoppe">Shoppe</a></li> | 
+		                 <li><a href="/gallery">Gallery</a></li> | 
+			     <li><a href="/blog">Blog</a></li> | 
+		    <li><a href="/contact">Contact</a></li>
+		</ul>
+
+          <div class="nav_divider"></div>
+	   </div>
+
+	</div>
+
+
+<%= yield %>
+
+ <div class="grind_divider"></div>
+
+<div class="footer">
+	
+	<ul class="breadcrumb_footer">
+		<li class="bean"><img style="margin-top:10px;" src="/images/social.png" width="90"></li> 
+		<li class="bean"><img class="" src="/images/foot.png" width="740"></li>
+		<div class="divider1"></div>
+		<div class="divider2"></div>
+		<div class="divider3"></div> 
+		<div class="divider4"></div>
+		<div class="divider5"></div>
+	</ul>
+</div>
+
+
+	</div>
+	</body>
+	</html>

@@ -1,0 +1,82 @@
+<style>
+		.simpleCart_items table{
+			border:1px solid #86391F;
+            margin-left:60px;
+			margin-top:50px;
+			margin-bottom:100px;
+		}
+		.simpleCart_items th{
+			color:#333;
+			text-align:left;
+			padding:10px 30px;
+			border-bottom:1px solid #86391F;
+			
+		}
+		.simpleCart_items td{
+			padding:10px 30px;
+			vertical-align:middle;
+			border-bottom:1px solid #86391F;
+			
+		}
+		.item-image,
+		.item-image img{width:72px;}
+		.item-name{width:20%;}
+		.item-quantity,
+		.item-decrement,
+		.item-increment,
+		.item-quantity input{
+			width:30px;
+			text-align:center;
+		}
+
+		.item-price,
+		.item-subtotal{width:30px;}
+	</style>
+
+<div class="cart_container">	
+<div class="simpleCart_items">
+</div>
+</div>
+
+<div class="shipping_select">
+	<p class="shipping_title">where are you located?</p>
+
+<select id="shippingSelect" onchange="simpleCart.update();">
+    <option value="States">States $4.50</option>
+    <option value="International">International $7.50</option>
+    <option value="Pickup">Pickup $0</option>
+</select>
+<img style="position:relative; margin-top:-190px; margin-left:200px"src="/images/caret.png" width="20">
+
+</div>
+
+<div class="send_checkout">
+<a href="javascript:;" style=" color:#86391F;" class="simpleCart_checkout">Proceed to Checkout</a>
+</div>
+
+<div id="blocker">
+   <img class="thankyou" src="/images/thankyou.png">
+</div>
+
+
+<script>
+
+setTimeout(function(){
+    $("#blocker").hide();
+}, 2000);
+
+</script>
+
+
+
+<script type="text/javascript">
+simpleCart.shipping = function(){
+  if( $("#shippingSelect").val() == "States" ){return 4.50;}
+  if( $("#shippingSelect").val() == "International" ){return 7.50;}
+  if( $("#shippingSelect").val() == "Pickup" ){return 0;}
+};
+</script> 
+
+
+
+
