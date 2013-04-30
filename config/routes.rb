@@ -3,6 +3,9 @@ Fresh::Application.routes.draw do
 
 
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
 match '/thegrind' => 'static_pages#home'
 
 match '/shoppe' => 'static_pages#shoppe'
